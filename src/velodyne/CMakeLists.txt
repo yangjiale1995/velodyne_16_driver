@@ -12,14 +12,12 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   std_msgs
   message_generation
-  #dynamic_reconfigure
   roslib
   tf
 )
 
 set(libpcap_LIBRARIES -lpcap)
 
-#find_package(PkgConfig REQUIRED)
 
 find_package(PCL REQUIRED)
 ## System dependencies are found with CMake's conventions
@@ -173,10 +171,6 @@ add_executable(velodyne_pointcloud src/velodyne_pointcloud/cloud_node.cc
 				   src/velodyne_pointcloud/calibration.cc
 			           src/velodyne_pointcloud/rawdata.cc)
 target_link_libraries(velodyne_pointcloud ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${YAML_CPP_LIBRARIES})
-
-add_executable(velodyne_laserscan src/velodyne_laserscan/node.cpp
-				  src/velodyne_laserscan/VelodyneLaserScan.cpp)
-target_link_libraries(velodyne_laserscan ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
 add_executable(velodyne_driver src/velodyne_driver/velodyne_node.cc
 			       src/velodyne_driver/driver.cc
